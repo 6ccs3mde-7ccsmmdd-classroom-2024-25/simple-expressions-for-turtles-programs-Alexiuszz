@@ -43,7 +43,14 @@ enum TurnCommand:
 ;
 
 IntExpression:
-	val = INT |
+	IntLiteral |
+	VariableReference
+;
+
+IntLiteral:
+	val = INT
+;
+VariableReference:
 	var = [VariableDeclaration]
 ;
 
