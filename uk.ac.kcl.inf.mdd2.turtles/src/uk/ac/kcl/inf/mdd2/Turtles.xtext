@@ -50,3 +50,18 @@ IntExpression:
 REAL returns ecore::EFloat hidden():
 	INT? "." INT
 ; 
+
+Expression:
+	Addition;
+
+Addition returns Expression:
+	Multiplication ({Additiion.left=current} op=('+' | '-') right=Multiplication)*
+;
+
+Multiplication returns Expression:
+	Primary ({Multiplication.left=current} op=('*' | '/') right=Primary)*
+;
+
+Primary returns Expression:
+	IntExpression | '(' Expression ')'
+;
